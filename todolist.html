@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>AVO CA DO</title>
+	<link rel="stylesheet" href="todolist.css">
+	<style>
+	@import url('https://fonts.googleapis.com/css2?family=Reem+Kufi&display=swap');
+	@import url('https://fonts.googleapis.com/css2?family=Reem+Kufi&family=Reenie+Beanie&display=swap');
+	</style> 
+</head>
+<body>
+
+	<div class="container">
+		<!-- judul -->
+			<div class="header">
+				<h2>AVO - CA - DO</h2>
+				<p>mau ngapain hari ini ?</p>
+			</div>
+		</div>
+
+		<!-- kolom untuk nambahin list -->
+		<form action="#">
+			<div class="list">
+			<div class="kolom">
+				<input type="text" id="new_text" placeholder="tambahkan">
+				<!-- <p>tambahkan</p> -->
+			</div>
+			<div class="button">
+				<a onclick="add()" href="#"><p>ADD</p></a>
+			</div>
+		</div>
+		</form>
+
+		<!-- list untuk kegiatan yang ditambahin -->
+		<ul id="todo">
+			
+		</ul>
+	</div>
+
+	<script>
+		const todo = document.getElementById('todo')
+
+		function add(){
+			//1. ambil nilai teks
+			let newText = document.getElementById("new_text")
+			console.log(newText.value); // mau nagmbil niali dari variabel yang ngambil nilai (newText)
+
+			//2. tambahkan list baru ke dalam ul
+
+			// let li = document.createElement('li');
+			// let txt = document.createTextNode(newText.value);
+			// li.appendChild(txt);
+			// todo.appendChild(li);
+
+			let newTodo = "<li> <span onclick='toggle(this)'>"+ newText.value +"&nbsp"+ "&nbsp" + "</span>" + "&nbsp"+  "<span onclick='remove(this)'><img src='image/remove.png' alt='remove' width='25px' height='25px'> </span>" +"</li>"
+
+			todo.insertAdjacentHTML('afterbegin', newTodo);
+
+			// kosongkan field 
+
+			newText.value = ""
+
+		}
+
+
+		function toggle(el){
+			el.classList.toggle('done'); //classlist.
+		}
+
+		function remove(el){
+			el.parentElement.remove()
+		}
+	</script>
+	
+</body>
+</html>
